@@ -22,7 +22,7 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     PagesRoutingModule,
     HelpersModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class PagesModule { }

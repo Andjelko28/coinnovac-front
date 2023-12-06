@@ -8,11 +8,11 @@
   
         <div class="modal-body p-5 pt-0">
           <form class="">
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}">
+            <div  class="form-floating mb-3">
+              <input type="email"  class="form-control rounded-3" id="floatingInput" placeholder="name@example.com" [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}">
               <label for="floatingInput">Email address</label>
             </div>
-            <div class="form-floating mb-3">
+            <div  class="form-floating mb-3">
               <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone:true}"/>
               <label for="floatingPassword">Password</label>
             </div>
@@ -20,8 +20,7 @@
                 <input type="password" class="form-control rounded-3" id="floatingPassword1" placeholder="Password" [(ngModel)]="user.confirmPassword" [ngModelOptions]="{standalone:true}"/>
                 <label for="floatingPassword1">Password</label>
               </div>
-            <button (click)="register()" class="w-100 mb-2 btn btn-lg rounded-3 btn-warning" type="submit">Sign up</button>
-            <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+            <button (click)="register()" routerLink="/login" class="w-100 mb-2 btn btn-lg rounded-3 btn-warning" type="submit">Sign up</button>
             <hr class="my-4">
           </form>
         </div>

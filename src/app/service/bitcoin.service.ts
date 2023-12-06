@@ -15,7 +15,7 @@ export class BitcoinService {
     return this.http.get<any[]>(`${this.apiUrl}`)
   }
 
-  getBitcoinPrice():Observable<number>{
+  getBitcoinPrice(): Observable<number> {
     return this.http.get<any[]>(this.apiUrl).pipe( // 
       map(data => data[133].price_24h)
     );

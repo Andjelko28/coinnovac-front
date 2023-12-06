@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { BitcoinService } from 'src/app/service/bitcoin.service';
 
+
 @Component({
   selector: 'app-buy',
   templateUrl: './buy.component.html',
@@ -29,7 +30,7 @@ export class BuyComponent {
       alert('You need to enter values!')
     } else if (this.user.email == null) {
       alert('Fill email field')
-    } 
+    }
     localStorage.setItem('email', this.user.email);
   }
 }

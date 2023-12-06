@@ -1,1 +1,11 @@
-<p>contact-us works!</p>
+<form (ngSubmit)="onSubmit()">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label" >Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email address" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label" >Write your issue here!</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description" [ngModelOptions]="{standalone: true}"></textarea>
+</div>
+<button class="w-100 mb-2 btn btn-lg rounded-3 btn-warning" type="submit">Send</button>
+</form>

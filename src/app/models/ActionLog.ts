@@ -2,7 +2,7 @@ export class Actionlog {
     id: number;
     vrsta: string;
     valuta: string;
-    uputstvo: string;
+    kriptoadresa: string;
     dobijeni_iznos: number;
     status_transakcije: string;
     updated: Date;

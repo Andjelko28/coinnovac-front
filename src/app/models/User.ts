@@ -4,4 +4,5 @@ export class User {
     is_admin: boolean;
     password: string;
     confirmPassword: string;
+    is_verified: boolean;
 }

@@ -13,16 +13,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
- 
 
-   register(user: User) {
-     return this.http.post(`${this.apiUrl}/register`, user);
-   }
+  register(user: User) {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
 
-  
-   login(user: User) {
-     return this.http.post(`${this.apiUrl}/login`, user);
-   }
+  login(user: User) {
+    return this.http.post(`${this.apiUrl}/login`, user);
+  }
+
 
   isLoggedIn() {
     const token = localStorage.getItem('crypto');
@@ -41,3 +40,5 @@ export class AuthService {
 
 
 }
+
+

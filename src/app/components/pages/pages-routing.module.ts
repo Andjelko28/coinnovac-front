@@ -6,13 +6,14 @@ import { BuyComponent } from './buy/buy.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ActionlogComponent } from './actionlog/actionlog.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'buy', component: BuyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'table', component: ActionlogComponent }
+  { path: 'table', component: ActionlogComponent },
 ];
 
 @NgModule({
