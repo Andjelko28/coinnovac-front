@@ -9,10 +9,10 @@ import { User } from '../models/User';
 })
 export class AuthService {
 
+  user: User = new User();
   apiUrl = evnironment.API_URL;
 
   constructor(private http: HttpClient) { }
-
 
   register(user: User) {
     return this.http.post(`${this.apiUrl}/register`, user);
@@ -35,10 +35,17 @@ export class AuthService {
     const tokenParts = token.split('.');
     const userDataPart = tokenParts[1];
     const user = JSON.parse(window.atob(userDataPart));
+    console.log(user);
     return user;
   }
 
+  getAdminData() {
+    const token = localStorage.getItem('crypto');
+    if (!token) return null;
+    const tokenParts = token.split('.');
+    const userDataPart = tokenParts[1];
+    const user = JSON.parse(window.atob(userDataPart));
+    return user.isAdmin;
+  }
 
 }
-
-

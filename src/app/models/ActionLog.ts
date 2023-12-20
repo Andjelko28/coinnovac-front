@@ -1,10 +1,11 @@
 export class Actionlog {
     id: number;
-    vrsta: string;
-    valuta: string;
-    kriptoadresa: string;
-    dobijeni_iznos: number;
-    status_transakcije: string;
+    crypto: string;
+    currency: string;
+    crypto_adress: string;
+    amount_due: number;
+    status: string;
+    user_mail: string;
     updated: Date;
     created: Date;
 }

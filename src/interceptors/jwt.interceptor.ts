@@ -14,7 +14,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     // Presrijecemo request i kacimo header sa tokenom
-    const token = localStorage.getItem('crypto-token');
+    const token = localStorage.getItem('crypto');
     request = request.clone({
       headers: request.headers.set('Authorization', `Bearer ${token}`)
     })

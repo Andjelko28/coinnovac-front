@@ -10,19 +10,26 @@
         <th scope="col">Status</th>
         <th scope="col">Updated</th>
         <th scope="col">Created</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let a of act">
+      <tr *ngFor="let a of actionlog">
         <td>{{a.id}}</td>
         <td>{{a.crypto}}</td>
         <td>{{a.currency}}</td>
         <td>{{a.amount_due | number:'1.0-0'}}</td>
         <td>{{a.crypto_adress}}</td>
-        <td>{{a.status}}</td>
+        <td><select [(ngModel)]="a.status " (change)="updateLog(a)" class="form-select" style="width: 130px;">
+            <option value="" disabled selected>Select</option>
+            <option *ngFor="let s of enumKeys" [value]="s">
+              {{status[s]}}
+            </option>
+          </select></td>
         <td>{{a.created | date: 'dd.MM.yyyy HH:mm'}}</td>
         <td>{{a.updated | date: 'dd.MM.yyyy HH:mm'}}</td>
+        <td><button (click)="deleteLog(a)" class="btn btn-warning">Delete</button></td>
     </tbody>
-
   </table>
 </div>
+

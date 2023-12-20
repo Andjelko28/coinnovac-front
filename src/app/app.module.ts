@@ -3,24 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { HelpersModule } from "./components/helpers/helpers.module";
-import { HttpClientModule } from '@angular/common/http';
-import { ActionlogComponent } from './components/pages/actionlog/actionlog.component';
-import { AdminComponent } from './components/admin/edit-log/admin.component';
-import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtInterceptor } from 'src/interceptors/jwt.interceptor';
+import { PagesModule } from './components/pages/pages.module';
 @NgModule({
     declarations: [
         AppComponent,
-        ActionlogComponent,
-        AdminComponent
     ],
-    providers: [],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HelpersModule,
         HttpClientModule,
-        FormsModule
-    ]
+        FormsModule,
+        ReactiveFormsModule,
+        PagesModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        }
+    ],
 })
 export class AppModule { }

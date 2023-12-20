@@ -3,6 +3,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "service",
+      "program": "C:/Users/Andjelko/Desktop/COINNOVAC/coinnovac-front/src/app/service/auth.service.js'",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

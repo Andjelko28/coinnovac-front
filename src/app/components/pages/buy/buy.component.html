@@ -2,11 +2,12 @@
   <div class="row" style="margin-top: 150px;">
     <div class="col">
       <label for="numberInput">Bitcoin</label>
-      <input [(ngModel)]="numberToMultiply" (ngModelChange)="calculateResult()" type="number" name="numberInput" class="form-control" placeholder="First name" ><!-- ngModelChange mijenja rezultat 'uzivo'-->
+      <input [(ngModel)]="numberToMultiply" (ngModelChange)="calculateResult()" type="number" name="numberInput" class="form-control"><!-- ngModelChange mijenja rezultat 'uzivo'-->
     </div>
     <div class="col">
       <label  for="result">EUR</label>
-      <input type="number" class="form-control" placeholder="Last name" [value]="result" id="result" name="result" readonly>
+      <!-- <input type="number" class="form-control"  [value]="result" id="result" [(ngModel)]="result" name="result" readonly > -->
+      <div class="form-control">{{result | number:'1.0-0'}}</div>
     </div>
   </div>
 </form>
@@ -15,11 +16,11 @@
   <div class="row">
     <div class="col">
       <label for="email">Email</label>
-      <input [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" type="email" name="email" class="form-control"><!-- ngModelChange mijenja rezultat 'uzivo'-->
+      <input [(ngModel)]="user_mail" [ngModelOptions]="{standalone:true}" type="email" name="email" class="form-control"><!-- ngModelChange mijenja rezultat 'uzivo'-->
     </div>
     <div class="col">
       <label for="cryptoa">Cryptoadress</label>
-      <input type="text" class="form-control" name="cryptoa">
+      <input type="text" class="form-control" name="cryptoa" [(ngModel)]="cryptoa">
     </div>
   </div>
 </form>

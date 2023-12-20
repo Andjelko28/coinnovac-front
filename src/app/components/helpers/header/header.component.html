@@ -8,13 +8,13 @@
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a routerLink="/" class="nav-link px-2 text-white">Home</a></li>
         <li><a routerLink="/contact" class="nav-link px-2 text-white">Contact us</a></li>
-        <li><a routerLink="/admin/add-log" class="nav-link px-2 text-white">Add log</a></li>
-        <li><a routerLink="/table" class="nav-link px-2 text-white">Action log</a></li>
+        <li *ngIf="isLoggedIn && !isAdmin"><a routerLink="/table" class="nav-link px-2 text-white">Action log</a></li>
+        <li *ngIf="isAdmin"><a routerLink="/admin/admin" class="nav-link px-2 text-white">Action log/Admin</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+      <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-      </form>
+      </form> -->
 
       <div class="text-end">
         <span *ngIf="isLoggedIn" class="btn btn-outline-light me-2">{{email}}</span>

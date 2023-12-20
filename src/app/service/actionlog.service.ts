@@ -2,22 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { evnironment } from 'src/environments/environments';
 import { Actionlog } from '../models/ActionLog';
-
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ActionlogService {
- 
+
   apiUrl = evnironment.API_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getActionLog() {
+  getActionLog(): any {
     return this.http.get<Actionlog[]>(`${this.apiUrl}/table`);
   }
 
-  getLogByID(id: number) {
-    return this.http.get<Actionlog>(`${this.apiUrl}/table/${id}`);
+  getLogByMail(user_mail: string): Observable<Actionlog> {
+    return this.http.get<Actionlog>(`${this.apiUrl}/user-logs/${user_mail}`);
   }
 
   insertNewLog(actionlog: Actionlog) {
@@ -25,7 +26,11 @@ export class ActionlogService {
   }
 
   updateLog(actionlog: Actionlog) {
-    return this.http.put(`${this.apiUrl}/table/${actionlog.id}`, actionlog);
+    return this.http.put(`${this.apiUrl}/admin/${actionlog.id}`, actionlog);
+  }
+
+  deleteLog(actionLog: Actionlog) {
+    return this.http.delete(`${this.apiUrl}/admin/${actionLog.id}`);
   }
 
 }

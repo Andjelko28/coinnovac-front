@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { ActionlogComponent } from './actionlog/actionlog.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'contact', component: ContactUsComponent },
   { path: 'buy', component: BuyComponent },
   { path: 'login', component: LoginComponent },

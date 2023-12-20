@@ -18,7 +18,7 @@ export class ContactUsComponent {
         console.log('Email sent');
       },
       error => {
-        console.log('Error sendin email', error);
+        console.log('Error sending email', error);
       }
     )
   }

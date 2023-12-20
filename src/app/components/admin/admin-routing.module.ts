@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './edit-log/admin.component';
+import { adminGuard } from 'src/guards/admin.guard';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: 'add-log', component: AdminComponent }
+  { path: 'admin', component: AdminComponent, canActivate: [adminGuard] },
 ];
 
 @NgModule({
