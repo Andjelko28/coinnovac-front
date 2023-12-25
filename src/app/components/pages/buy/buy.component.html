@@ -23,6 +23,25 @@
       <input type="text" class="form-control" name="cryptoa" [(ngModel)]="cryptoa">
     </div>
   </div>
+  <div class="col">
+    <label for="holder">Card Holder</label>
+    <input [(ngModel)]="cardHolder" type="text" class="form-control" name="holder" >
+  </div>
+  <div class="col">
+    <label for="cn">Card Number</label>
+    <input [(ngModel)]="cardNumber" type="tel" id="cn" maxle class="form-control" name="cn" maxlength="16" pattern="[0-9\s]{14,16}" autocomplete="cc-number" placeholder="xxxx xxxx xxxx xxxx" required>
+  </div>
+  <div class="col">
+    <label for="valid">Valid Thru</label>
+    <input [(ngModel)]="valid" type="month" class="form-control" name="valid" placeholder="00/00" required>
+  </div>
+  <div class="col">
+    <label for="cvv">CCV</label>
+    <input [(ngModel)]="cvv" type="tel" class="form-control" name="ccv" maxlength="3">
+  </div>
 </form>
+
+
+
 
 <div class="container" style="text-align: center;"><button class="btn btn-warning" style="margin-top: 20px;" (click)="saveButton()">Save</button></div>

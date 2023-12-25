@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let a of actionlog">
+      <tr *ngFor="let a of getPagedLogs()">
         <td>{{a.id}}</td>
         <td>{{a.crypto}}</td>
         <td>{{a.currency}}</td>
@@ -31,5 +31,17 @@
         <td><button (click)="deleteLog(a)" class="btn btn-warning">Delete</button></td>
     </tbody>
   </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="btn btn-dark" (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <button class="btn btn-warning" (click)="setPage(page)">{{ page }}</button>
+      </li>
+      <li class="page-item">
+        <button class="btn btn-dark" (click)="setPage(currentPage + 1)" [disabled]="currentPage === pages.length">Next</button>
+      </li>
+    </ul>
+  </nav>
 </div>
-

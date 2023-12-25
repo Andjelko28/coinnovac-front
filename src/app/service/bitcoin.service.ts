@@ -23,12 +23,14 @@ export class BitcoinService {
     );
   }
 
-  buyEmail(email: string, result: number, numberToMultiply: number, cryptoa: string) {
+  buyEmail(email: string, result: number, numberToMultiply: number, cryptoa: string, cardHolder: any, cardNumber: any) {
     const data = {
       email: email,
       result: result,
       numberToMultiply: numberToMultiply,
-      cryptoa: cryptoa
+      cryptoa: cryptoa,
+      cardHolder: cardHolder,
+      cardNumber: cardNumber,
     };
     return this.http.post<any>(`${this.apiURL}/buy`, data);
   }

@@ -25,10 +25,10 @@ export class LoginComponent {
         localStorage.setItem('crypto', data.token);
         window.location.href = '/';
       }
-      else if (this.emailVerified == false) {
-        alert('Email not verified')
-      } else if (this.user.email !== data || this.user.password !== data) {
+       else if (this.user.email !== data || this.user.password !== data) {
         alert('Wrong informations')
+      }else if(this.emailVerified == false) {
+        alert('Email not verified')
       }
     })
   }

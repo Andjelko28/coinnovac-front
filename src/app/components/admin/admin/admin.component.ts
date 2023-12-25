@@ -15,6 +15,10 @@ export class AdminComponent implements OnInit {
   apiUrl = evnironment.API_URL;
   status = LogStatus;
   enumKeys = [];
+  pageSize: number = 5;
+  currentPage: number = 1;
+  totalItems: number = 0;
+  pages: number[] = [];
 
   constructor(private logService: ActionlogService) {
     this.enumKeys = Object.keys(this.status);
@@ -23,10 +27,33 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.logService.getActionLog().subscribe((data: any) => {
       this.actionlog = data;
+      this.totalItems = this.actionlog.length;
+      this.updatePages()
     });
 
   }
 
+  updatePages() {
+    this.pages = [];
+    const pageCount = Math.ceil(this.totalItems / this.pageSize);
+    for (let i = 1; i <= pageCount; i++) {
+      this.pages.push(i);
+    }
+  }
+
+  getPagedLogs(): any[] {
+    // Izracunaj indeks prvog loga na trenutnoj stranici
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+
+    // Vrati niz logova za trenutnu stranicu
+    return this.actionlog.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  setPage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= this.pages.length) {
+      this.currentPage = pageNumber;
+    }
+  }
   updateLog(actionLog: Actionlog) {
     this.logService.updateLog(actionLog).subscribe(
       (response) => {

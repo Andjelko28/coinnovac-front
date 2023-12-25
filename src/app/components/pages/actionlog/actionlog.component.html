@@ -23,6 +23,18 @@
         <td>{{a.created | date: 'dd.MM.yyyy HH:mm'}}</td>
         <td>{{a.updated | date: 'dd.MM.yyyy HH:mm'}}</td>
     </tbody>
-
   </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="btn btn-dark" (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <button class="btn btn-warning" (click)="setPage(page)">{{ page }}</button>
+      </li>
+      <li class="page-item">
+        <button class="btn btn-dark" (click)="setPage(currentPage + 1)" [disabled]="currentPage === pages.length">Next</button>
+      </li>
+    </ul>
+  </nav>
 </div>

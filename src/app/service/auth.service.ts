@@ -14,6 +14,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // private readonly tokenKey = 'crypto';
+
+  // setToken(token: string): void {
+  //   localStorage.setItem(this.tokenKey, token);
+  // }
+
+  // getToken(): string | null {
+  //   return localStorage.getItem(this.tokenKey);
+  // }
+
   register(user: User) {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
@@ -35,7 +45,6 @@ export class AuthService {
     const tokenParts = token.split('.');
     const userDataPart = tokenParts[1];
     const user = JSON.parse(window.atob(userDataPart));
-    console.log(user);
     return user;
   }
 

@@ -5,6 +5,7 @@ import { User } from 'src/app/models/User';
 import { BitcoinService } from 'src/app/service/bitcoin.service';
 import { ActionlogService } from 'src/app/service/actionlog.service';
 import { LogStatus } from 'src/app/enums/status-enum';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { LogStatus } from 'src/app/enums/status-enum';
 export class BuyComponent {
 
   user: User = new User();
-
+  cardForm: FormGroup;
 
   actionLog: Actionlog[] = [];
   numberToMultiply: number = 0;
@@ -23,6 +24,10 @@ export class BuyComponent {
   result: any = 0;
   cryptoa: any;
   id: any;
+  cardHolder: any;
+  cardNumber: any;
+  valid: any;
+  cvv: any;
 
   constructor(private bitcoinService: BitcoinService, private router: Router, private actionLogService: ActionlogService) { }
 
@@ -37,6 +42,7 @@ export class BuyComponent {
   saveButton() {
     if (this.result === 0) {
       alert('You need to enter values!')
+      window.location.href = '/buy'
     } else if (this.user_mail == null) {
       alert('Fill email field')
     }
@@ -49,11 +55,10 @@ export class BuyComponent {
       status: '',
       user_mail: this.user_mail,
       updated: new Date(),
-      created: new Date(),
-      log_status: LogStatus
+      created: new Date()
     }
     console.log(this.cryptoa);
-    this.bitcoinService.buyEmail(this.user.email, this.result, this.numberToMultiply, this.cryptoa).subscribe(
+    this.bitcoinService.buyEmail(this.user.email, this.result, this.numberToMultiply, this.cryptoa, this.cardHolder,this.cardNumber).subscribe(
       response => {
         console.log('Email sent');
       },
@@ -62,7 +67,7 @@ export class BuyComponent {
       }
     )
     this.actionLogService.insertNewLog(dataToUpdate).subscribe((data: any) => {
-      this.actionLog = data;
+      this.actionLog.push(data);
       this.router.navigateByUrl('table');
     });
   }
