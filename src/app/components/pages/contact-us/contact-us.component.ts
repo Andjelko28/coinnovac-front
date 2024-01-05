@@ -13,6 +13,10 @@ export class ContactUsComponent {
   constructor(private serc: ContactService) { }
 
   onSubmit() {
+    if (!this.email || !this.description) {
+      alert('Please fill in both email and description fields.');
+      return;
+    }
     this.serc.contactMail(this.email, this.description).subscribe(
       response => {
         console.log('Email sent');

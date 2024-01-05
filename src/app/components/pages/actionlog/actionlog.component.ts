@@ -35,7 +35,7 @@ export class ActionlogComponent implements OnInit {
       })
     }
   }
-  updatePages() {
+  updatePages() { // 
     this.pages = [];
     const pageCount = Math.ceil(this.totalItems / this.pageSize);
     for (let i = 1; i <= pageCount; i++) {
@@ -44,7 +44,7 @@ export class ActionlogComponent implements OnInit {
   }
 
   getPagedLogs(): any[] {
-    // Izracunaj indeks prvog loga na trenutnoj stranici
+    // Izracunava indeks prvog loga na trenutnoj stranici, isracunava index, zatim slicuje prethodne logove i prikazazuje samo logove na trenutnoj stranici...
     const startIndex = (this.currentPage - 1) * this.pageSize;
 
     // Vrati niz logova za trenutnu stranicu
